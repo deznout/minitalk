@@ -27,19 +27,19 @@ CLT_BON_OBJS	= ${CLT_BON_SRC:.c=.o}
 
 all:	$(SERVER) $(CLIENT)
 
-.c.o:
+.c.o: 
 	${CC} ${CFLAGS} -c -g $< -o ${<:.c=.o}
 
-$(SERVER):	$(SRV_OBJS)
+$(SERVER):	$(SRV_OBJS) ${HEADER}
 				$(CC) $(SRV_OBJS) $(CFLAGS) -g -o $(SERVER)
 
-$(CLIENT):	$(CLT_OBJS)
+$(CLIENT):	$(CLT_OBJS) ${HEADER}
 				$(CC) $(CLT_OBJS) $(CFLAGS) -g -o $(CLIENT)
 
-$(SERVER_BON):	$(SRV_BON_OBJS)
+$(SERVER_BON):	$(SRV_BON_OBJS) ${HEADER}
 				$(CC) $(SRV_BON_OBJS) $(CFLAGS) -g -o $(SERVER_BON)
 
-$(CLIENT_BON):	$(CLT_BON_OBJS)
+$(CLIENT_BON):	$(CLT_BON_OBJS) ${HEADER}
 				$(CC) $(CLT_BON_OBJS) $(CFLAGS) -g -o $(CLIENT_BON)
 
 bonus:	${SERVER_BON} ${CLIENT_BON}
